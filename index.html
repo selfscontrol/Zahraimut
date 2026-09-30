@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Editorial & Playful Style</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Styling -->
+    <style>
+        /* --- CSS VARIABLES (PALET WARNA & PAIRING) --- */
+        :root {
+            --bg-main: #FFFDF7;            /* Cream Warm Light */
+            --pastel-yellow: #FDE89A;      /* Kuning Pastel Playful */
+            --accent-yellow: #FCD34D;      /* Kuning hangat untuk highlight */
+            --chocolate-dark: #3D2314;     /* Coklat Tua (Text Utama & Border) */
+            --chocolate-soft: #634331;     /* Coklat Medium (Subteks) */
+            --white: #FFFFFF;
+            
+            --font-heading: 'Syne', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+
+            --border-style: 2px solid var(--chocolate-dark);
+            --shadow-playful: 4px 4px 0px var(--chocolate-dark);
+            --shadow-hover: 7px 7px 0px var(--chocolate-dark);
+            --radius-main: 16px;
+        }
+
+        /* --- RESET & BASIC STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--chocolate-dark);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            background: rgba(255, 253, 247, 0.85);
+            backdrop-filter: blur(10px);
+            border: var(--border-style);
+            border-radius: 50px;
+            padding: 12px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: var(--shadow-playful);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--chocolate-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--chocolate-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--chocolate-soft);
+        }
+
+        .btn-nav {
+            background-color: var(--pastel-yellow);
+            border: var(--border-style);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--chocolate-dark);
+            box-shadow: 2px 2px 0px var(--chocolate-dark);
+            transition: all 0.2s ease;
+        }
+
+        .btn-nav:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0px var(--chocolate-dark);
+        }
+
+        /* --- LAYOUT CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0 60px 0;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 140px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--pastel-yellow);
+            border: var(--border-style);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            box-shadow: 2px 2px 0px var(--chocolate-dark);
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero-title span {
+            background: linear-gradient(120deg, var(--pastel-yellow) 0%, var(--pastel-yellow) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 35%;
+            background-position: 0 88%;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--chocolate-soft);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-card {
+            background-color: var(--white);
+            border: var(--border-style);
+            border-radius: var(--radius-main);
+            padding: 24px;
+            box-shadow: var(--shadow-playful);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-avatar {
+            width: 100%;
+            height: 280px;
+            background-color: var(--pastel-yellow);
+            border: var(--border-style);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            margin-bottom: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* MARQUEE TEXT (TEKS BERJALAN) */
+        .marquee-container {
+            background: var(--chocolate-dark);
+            color: var(--pastel-yellow);
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: var(--border-style);
+            border-bottom: var(--border-style);
+            margin: 40px 0;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- SECTION HEADINGS --- */
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background-color: var(--chocolate-dark);
+        }
+
+        /* --- SELECTED WORKS (PORTFOLIO GRID) --- */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .work-card {
+            background: var(--white);
+            border: var(--border-style);
+            border-radius: var(--radius-main);
+            padding: 20px;
+            box-shadow: var(--shadow-playful);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .work-img {
+            width: 100%;
+            height: 200px;
+            background-color: var(--pastel-yellow);
+            border: var(--border-style);
+            border-radius: 10px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .work-tag {
+            align-self: flex-start;
+            background-color: var(--bg-main);
+            border: var(--border-style);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .work-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .work-desc {
+            font-size: 0.95rem;
+            color: var(--chocolate-soft);
+            margin-bottom: 16px;
+        }
+
+        /* --- EXPERTISE / SKILLS --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-box {
+            background-color: var(--pastel-yellow);
+            border: var(--border-style);
+            border-radius: var(--radius-main);
+            padding: 24px;
+            box-shadow: var(--shadow-playful);
+            transition: transform 0.2s ease;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-50px) rotate(1deg);
+            transform: scale(1.03);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .skill-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .skill-desc {
+            font-size: 0.85rem;
+            color: var(--chocolate-soft);
+        }
+
+        /* --- FOOTER & CONTACT --- */
+        footer {
+            background-color: var(--pastel-yellow);
+            border-top: var(--border-style);
+            padding: 80px 0 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .email-btn {
+            display: inline-block;
+            background-color: var(--chocolate-dark);
+            color: var(--pastel-yellow);
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 4px 4px 0px var(--chocolate-soft);
+            transition: all 0.2s ease;
+            margin-bottom: 40px;
+        }
+
+        .email-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--chocolate-soft);
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border: var(--border-style);
+            border-radius: 50%;
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--chocolate-dark);
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 2px 2px 0px var(--chocolate-dark);
+            transition: transform 0.2s;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: var(--chocolate-soft);
+            border-top: 1px solid rgba(61, 35, 20, 0.2);
+            padding-top: 20px;
+        }
+
+        /* --- MODAL INTERAKTIF (STUDI KASUS PROYEK) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(61, 35, 20, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-main);
+            border: var(--border-style);
+            border-radius: var(--radius-main);
+            max-width: 650px;
+            width: 100%;
+            padding: 32px;
+            box-shadow: var(--shadow-hover);
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: modalPop 0.3s ease-out;
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--pastel-yellow);
+            border: var(--border-style);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                margin: 0 auto 30px auto;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .footer-title {
+                font-size: 2.2rem;
+            }
+            .nav-links {
+                display: none; /* Sederhanakan untuk mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <a href="#" class="logo">ALEXA.STUDIO★</a>
+        <ul class="nav-links">
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#works">Karya</a></li>
+            <li><a href="#skills">Keahlian</a></li>
+        </ul>
+        <a href="#contact" class="btn-nav">Kontak Saya</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="about">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="hero-badge">👋 Halo, Selamat Datang!</span>
+                <h1 class="hero-title">Mendesain Produk Digital dengan <span>Penuh Karakter.</span></h1>
+                <p class="hero-subtitle">Saya seorang UI/UX Designer & Product Strategist yang berfokus pada menciptakan pengalaman web yang fungsional, estetik, dan menyenangkan bagi pengguna.</p>
+                <a href="#works" class="btn-nav" style="padding: 12px 28px; font-size: 1rem;">Lihat Portofolio ↓</a>
+            </div>
+            <div class="hero-card">
+                <div class="hero-avatar">
+                    🎨
+                </div>
+                <h3 style="font-family: var(--font-heading);">Alexa Devina</h3>
+                <p style="font-size: 0.85rem; color: var(--chocolate-soft);">UI/UX Designer berbasis di Jakarta</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE RUNNING TEXT -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            UI/UX DESIGN ★ USER RESEARCH ★ DESIGN SYSTEM ★ WIREFRAMING ★ INTERACTIVE PROTOTYPE ★ WEBFLOW DEVELOPMENT ★
+            UI/UX DESIGN ★ USER RESEARCH ★ DESIGN SYSTEM ★ WIREFRAMING ★ INTERACTIVE PROTOTYPE ★ WEBFLOW DEVELOPMENT ★
+        </div>
+    </div>
+
+    <!-- WORKS SECTION -->
+    <section class="container" id="works">
+        <div class="section-header">
+            <h2 class="section-title">Karya Pilihan</h2>
+        </div>
+        <div class="works-grid">
+            
+            <!-- Proyek 1 -->
+            <div class="work-card" onclick="openModal('Kopi Lokal App', 'Aplikasi Mobile & UI/UX', 'Mendesain ulang pengalaman pemesanan kopi secara online dengan meningkatkan kemudahan navigasi dan kecepatan checkout hingga 35%.')">
+                <div class="work-img">☕</div>
+                <span class="work-tag">UI/UX & Mobile App</span>
+                <h3 class="work-title">Kopi Lokal App</h3>
+                <p class="work-desc">Pengalaman memesan kopi lokal dengan navigasi yang cepat dan visual yang menggugah selera.</p>
+                <small style="font-weight: 700; color: var(--chocolate-dark);">Klik untuk studi kasus →</small>
+            </div>
+
+            <!-- Proyek 2 -->
+            <div class="work-card" onclick="openModal('Finflow Dashboard', 'Web App & Dashboard', 'Merancang dashboard finansial yang kompleks menjadi tampilan grafis yang intuitif dan mudah dipahami oleh pengguna awam.')">
+                <div class="work-img">📊</div>
+                <span class="work-tag">Web Application</span>
+                <h3 class="work-title">Finflow Dashboard</h3>
+                <p class="work-desc">Sistem manajemen keuangan yang kompleks disederhanakan melalui visualisasi data visual.</p>
+                <small style="font-weight: 700; color: var(--chocolate-dark);">Klik untuk studi kasus →</small>
+            </div>
+
+            <!-- Proyek 3 -->
+            <div class="work-card" onclick="openModal('Bloom Botanical', 'E-Commerce Website', 'Desain website toko bunga online berbasis estetika editorial yang responsif dan terintegrasi dengan Payment Gateway.')">
+                <div class="work-img">🪴</div>
+                <span class="work-tag">E-Commerce</span>
+                <h3 class="work-title">Bloom Botanical</h3>
+                <p class="work-desc">Toko tanaman hias online dengan pendekatan desain ala majalah digital modern.</p>
+                <small style="font-weight: 700; color: var(--chocolate-dark);">Klik untuk studi kasus →</small>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EXPERTISE SECTION -->
+    <section class="container" id="skills">
+        <div class="section-header">
+            <h2 class="section-title">Spesialisasi</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-box">
+                <div class="skill-icon">✏️</div>
+                <h3 class="skill-title">UI/UX Design</h3>
+                <p class="skill-desc">Merancang antarmuka pengguna yang estetik, mudah diganti skala, dan intuitif.</p>
+            </div>
+            <div class="skill-box">
+                <div class="skill-icon">🔍</div>
+                <h3 class="skill-title">User Research</h3>
+                <p class="skill-desc">Menganalisis kebutuhan pengguna melalui wawancara dan pengujian usable (*Usability Testing*).</p>
+            </div>
+            <div class="skill-box">
+                <div class="skill-icon">🧩</div>
+                <h3 class="skill-title">Design System</h3>
+                <p class="skill-desc">Membuat komponen UI yang konsisten dan dapat digunapakai kembali oleh tim *developer*.</p>
+            </div>
+            <div class="skill-box">
+                <div class="skill-icon">⚡</div>
+                <h3 class="skill-title">Prototyping</h3>
+                <p class="skill-desc">Mengubah ide statis menjadi mikro-interaksi yang hidup menggunakan Figma/Framer.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTACT SECTION -->
+    <footer id="contact">
+        <div class="container footer-content">
+            <span class="hero-badge" style="background-color: var(--white);">Tertarik Bekerja Sama?</span>
+            <h2 class="footer-title">Mari Buat Sesuatu<br>Yang Luar Biasa!</h2>
+            <a href="mailto:halo@alexadevina.com" class="email-btn">halo@alexadevina.com ✉️</a>
+           
